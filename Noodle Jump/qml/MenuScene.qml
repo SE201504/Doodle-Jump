@@ -13,17 +13,59 @@ Scene {
   signal gameStart
   signal gameSettings
 
+
   Image {
     anchors.fill: menuScene.gameWindowAnchorItem
-    source: "../assets/background0.jpg"
+    fillMode: Image.Stretch
+    source: "../assets/snowbck.png"
+
+    Image {
+        id:bckBottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        source: "../assets/snowbckbottom.png"
+    }
+  }
+
+
+  Image {
+      id: title
+      width: 202
+      height:48
+      anchors.top: parent.top
+      anchors.margins: 20
+      anchors.left: parent.left
+      anchors.leftMargin: 10
+      source: "../assets/doodle-jump.png"
+  }
+
+  PhysicsWorld {
+      id:gravity
+      gravity.y:15
+      updatesPerSecondForPhysics: 60
+      debugDrawVisible: false
+  }
+
+
+  Noodle {
+      id:noodle
+      x:30
+      y:200
+  }
+
+  Floor {
+      id:floor
+      x:30
+      y:400
   }
 
   Image {
       id: start
-      width: 100
-      height: 50
+      width: 110
+      height: 40
       anchors.centerIn: parent
-      source: "../assets/start.jpg"
+      source: "../assets/play.png"
 
       MouseArea {
           anchors.fill: parent
@@ -33,12 +75,13 @@ Scene {
   }
   Image {
       id: setting
-      width: 100
-      height: 50
+      width: 57
+      height: 48
       anchors.top: start.bottom
       anchors.left: start.left
-      anchors.topMargin: 30
-      source: "../assets/settings.png"
+      anchors.leftMargin: 150
+      anchors.topMargin: 150
+      source: "../assets/options.png"
 
       MouseArea {
           anchors.fill: parent
@@ -46,5 +89,4 @@ Scene {
               gameSettings()
       }
   }
-
 }

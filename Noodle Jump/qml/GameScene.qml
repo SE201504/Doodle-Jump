@@ -11,22 +11,29 @@ Scene {
 
     signal pause
     signal gameover
-    Text {
-        id: name
-        text: qsTr("gamescene test")
-    }
-    Image {
-        width: 100
-        height: 50
-        anchors.top: start.bottom
-        anchors.left: start.left
-        anchors.topMargin: 30
-        source: "../assets/settings.png"
 
-        MouseArea {
-            anchors.fill: parent
-            onClicked:
-                pause()
-        }
+    Image {
+        id: gamebackImage
+        source: "../assets/snowbck.png"
+    }
+
+    PhysicsWorld {
+        id:gravity
+        gravity.y:9.81
+        updatesPerSecondForPhysics: 60
+        debugDrawVisible: true
+    }
+
+
+    Noodle {
+        id:noodle
+        x:30
+        y:200
+    }
+
+    Floor {
+        id:floor
+        x:10
+        y:400
     }
 }

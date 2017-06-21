@@ -20,11 +20,9 @@ GameWindow {
       id: menuScene
       onGameStart: {
         gameWindow.state = "game"
-        ga.logEvent("Click", "GameScene")
       }
       onGameSettings: {
           gameWindow.state = "settings"
-          ga.logEvent("Click", "GameSettings")
       }
     }
     SettingScene {
