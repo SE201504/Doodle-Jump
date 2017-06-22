@@ -1,6 +1,6 @@
 import VPlay 2.0
 import QtQuick 2.0
-import "../"
+import "../qml/entity"
 import VPlayPlugins 1.0
 
 Scene {
@@ -28,7 +28,6 @@ Scene {
     }
   }
 
-
   Image {
       id: title
       width: 202
@@ -47,6 +46,11 @@ Scene {
       debugDrawVisible: false
   }
 
+  ParticleVPlay {
+       id: fireParticle
+       fileName: "../qml/particle/snowPractice.json"
+       autoStart: true
+     }
 
   Noodle {
       id:noodle
