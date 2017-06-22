@@ -5,7 +5,6 @@ import "../qml/entity"
 Scene {
 
     id:gameScene
-
     opacity: 0
     visible: opacity > 0
     enabled: visible
@@ -44,24 +43,48 @@ Scene {
         y: gameScene.height / 10 * index // distribute the platforms across the screen
       }
     }
-    Timer {
-        interval: 500
-        running: true
-        repeat: true
-        onTriggered:
-            if(noodle.y < 100) {
-                var newEntityProperties = {
-                    x: utils.generateRandomValueBetween(0, gameScene.width),
-                    y: noodle.y + utils.generateRandomValueBetween(0, 80)
-                }
-                entityManager.createEntityFromComponentWithProperties(
-                            floor,
-                            newEntityProperties)
-            }
+
+
+    Component {
+        id:component
+        Floor {
+            x:-10
+            y:-10
+        }
     }
 
+    Connections {
+        target: noodle
+        onArrive:{
+            if(noodle.y < 200) {
+                var newEntityProperties = {
+                    x: utils.generateRandomValueBetween(0, gameScene.width),
+                    y: utils.generateRandomValueBetween(-150, -200)
+                }
+                entityManager.createEntityFromComponentWithProperties(component,newEntityProperties)
+                console.log("created")
+            }
+        }
+    }
+
+//    Timer{
+//        interval: 300
+//        running: true
+//        repeat: true
+
+
+//        onTriggered: {
+//            if(noodle.y < 200) {
+//                var newEntityProperties = {
+//                    x: utils.generateRandomValueBetween(0, gameScene.width),
+//                    y: utils.generateRandomValueBetween(-150, -200)
+//                }
+//                entityManager.createEntityFromComponentWithProperties(component,newEntityProperties)
+//                console.log("created")
+//            }
+//        }
+//    }
+
     Keys.forwardTo: noodle.controller
-
-
 
 }

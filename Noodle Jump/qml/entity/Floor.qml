@@ -6,6 +6,9 @@ EntityBase {
     entityType: "floor"
     width: 42
     height: 12
+    poolingEnabled: true
+
+    signal floorRemove
 
     SpriteSequenceVPlay {
         id:noodleSprite
@@ -25,13 +28,19 @@ EntityBase {
            height: 10
            bodyType: Body.Dynamic // only Dynamic bodies can collide with each other
            collisionTestingOnlyMode: true // collisions are detected, but no physics are applied to the colliding bodies
+           fixture.onBeginContact:{
+
+               if (floor.y < -10) {
+                   floor.removeEntity()
+               }
+             }
          }
       MovementAnimation {
          id: movement
          target: floor
          property: "y"
          velocity:  noodle.impulse
-         running: noodle.y < 100 && noodle.impulse >0
+         running: noodle.y < 200 && noodle.linearVelocity < 0
        }
 
 }

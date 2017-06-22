@@ -7,8 +7,11 @@ EntityBase {
     width: 40
     height: 32
 
+    signal arrive
+
     property alias controller: controller
     property int impulse: y - noodleCollider.linearVelocity.y
+    property int linearVelocity: noodleCollider.linearVelocity.y
 
     Image {
         id: noodleImage
@@ -33,4 +36,26 @@ EntityBase {
         id:controller
     }
 
+    onYChanged: {
+        if(y < 150) {
+            arrive()
+            y = 150
+        }
+        if(noodleCollider.linearVelocity < 0){
+            noodleCollider.bodyType = Body.Static
+        } else{
+            noodleCollider.bodyType = Body.Dynamic
+        }
+    }
+    onXChanged: {
+        if(x < 0)
+        {
+            x = parent.width
+        }
+        if(x > parent.width)
+        {
+            x = 0
+        }
+
+    }
 }
