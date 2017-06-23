@@ -51,6 +51,12 @@ Scene {
         y:350
     }
 
+    BrokeFloor {
+        id:brokeFloor
+        x:30
+        y:270
+    }
+
     Connections {
         target: noodle
         onDie:{

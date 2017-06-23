@@ -2,7 +2,7 @@ import QtQuick 2.0
 import VPlay 2.0
 
 EntityBase {
-    id:Brokefloor
+    id:brokefloor
     entityType: "BrokeFloor"
     width: 42
     height: 12
@@ -11,16 +11,44 @@ EntityBase {
 
     SpriteSequenceVPlay {
         id:floorSequenceVplay
-        defaultSource: "../../assets/snowresource.png"
+        defaultSource: "../../assets/brokeFloor.png"
         anchors.fill: parent
-        SpriteVPlay {
-            frameCount: 6
-            frameWidth: 112
-            frameHeight: 32
-            frameRate: 1
 
+        SpriteVPlay {
+            name: "1"
+            frameCount: 1
+            frameWidth: 120
+            frameHeight: 32
+            frameRate: 0
+        }
+        SpriteVPlay {
+            name:"2"
+            frameCount: 1
+            frameY: 32
+            frameWidth: 120
+            frameHeight: 48
+            frameRate:5
+            to: {"3":2}
+        }
+        SpriteVPlay {
+            name:"3"
+            frameCount: 1
+            frameY: 80
+            frameWidth: 120
+            frameHeight: 64
+            frameRate: 5
+            to: {"4":2}
+        }
+        SpriteVPlay {
+            name:"4"
+            frameCount: 1
+            frameY: 160
+            frameWidth: 120
+            frameHeight: 55
+            frameRate: 1
         }
     }
+
 
       BoxCollider {
            id: floorCollider
@@ -30,9 +58,14 @@ EntityBase {
            bodyType: Body.Dynamic // only Dynamic bodies can collide with each other
            collisionTestingOnlyMode: true // collisions are detected, but no physics are applied to the colliding bodies
            fixture.onBeginContact:{
+               var otherEntity = other.getBody().target
+               var otherEntityType = otherEntity.entityType
 
+               if(otherEntityType === "noodle") {
+               floorSequenceVplay.jumpTo("2")
              }
          }
+      }
       MovementAnimation {
          id: movement
          target: floor

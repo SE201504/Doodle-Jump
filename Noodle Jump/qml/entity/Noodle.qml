@@ -32,7 +32,7 @@ EntityBase {
           }
       }
           linearVelocity.x : system.desktopPlatform ?
-                                  twoAxisController.xAxis * 200 :  //  for desktop
+                                  controller.xAxis * 200 :  //  for desktop
                                   (accelerometer.reading !== null ? -accelerometer.reading.x * 100 : 0)   // for mobile
     }
 
