@@ -3,7 +3,7 @@ import VPlay 2.0
 
 Scene {
 
-    id:settingScene
+    id: settingScene
 
     opacity: 0
     visible: opacity > 0

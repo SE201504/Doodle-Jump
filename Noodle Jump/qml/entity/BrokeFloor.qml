@@ -2,7 +2,7 @@ import QtQuick 2.0
 import VPlay 2.0
 
 EntityBase {
-    id:brokefloor
+    id: brokefloor
     entityType: "BrokeFloor"
     width: 42
     height: 12
@@ -10,7 +10,7 @@ EntityBase {
     property int type
 
     SpriteSequenceVPlay {
-        id:floorSequenceVplay
+        id: floorSequenceVplay
         defaultSource: "../../assets/brokeFloor.png"
         anchors.fill: parent
 
@@ -22,25 +22,29 @@ EntityBase {
             frameRate: 0
         }
         SpriteVPlay {
-            name:"2"
+            name: "2"
             frameCount: 1
             frameY: 32
             frameWidth: 120
             frameHeight: 48
-            frameRate:5
-            to: {"3":2}
+            frameRate: 5
+            to: {
+                3: 2
+            }
         }
         SpriteVPlay {
-            name:"3"
+            name: "3"
             frameCount: 1
             frameY: 80
             frameWidth: 120
             frameHeight: 64
             frameRate: 5
-            to: {"4":2}
+            to: {
+                4: 2
+            }
         }
         SpriteVPlay {
-            name:"4"
+            name: "4"
             frameCount: 1
             frameY: 160
             frameWidth: 120
@@ -49,35 +53,43 @@ EntityBase {
         }
     }
 
+    BoxCollider {
+        id: floorCollider
+        anchors.fill: parent
+        width: parent.width
+        height: 10
+        bodyType: Body.Dynamic // only Dynamic bodies can collide with each other
+        collisionTestingOnlyMode: true // collisions are detected, but no physics are applied to the colliding bodies
+        fixture.onBeginContact: {
+            var otherEntity = other.getBody().target
+            var otherEntityType = otherEntity.entityType
 
-      BoxCollider {
-           id: floorCollider
-           anchors.fill: parent
-           width: parent.width
-           height: 10
-           bodyType: Body.Dynamic // only Dynamic bodies can collide with each other
-           collisionTestingOnlyMode: true // collisions are detected, but no physics are applied to the colliding bodies
-           fixture.onBeginContact:{
-               var otherEntity = other.getBody().target
-               var otherEntityType = otherEntity.entityType
-
-               if(otherEntityType === "noodle") {
-               floorSequenceVplay.jumpTo("2")
-             }
-         }
-      }
-      MovementAnimation {
-         id: movement
-         target: floor
-         property: "y"
-         velocity:  noodle.impulse/2
-         running: noodle.y < 160
-       }
-      onYChanged: {
-          if(y > parent.height){
-              x = utils.generateRandomValueBetween(0, parent.width)
-              y = utils.generateRandomValueBetween(0, -parent.height)
-          }
-      }
-
+            if (otherEntityType === "noodle") {
+                floorSequenceVplay.jumpTo("2")
+                movement.running = true
+            }
+        }
+    }
+    MovementAnimation {
+        id: movement
+        target: brokefloor
+        property: "y"
+        velocity: 100
+    }
+    MovementAnimation {
+        id: movement1
+        target: brokefloor
+        property: "y"
+        velocity: noodle.impulse / 2
+        running: noodle.y < 160
+    }
+    onYChanged: {
+        if (y > parent.height) {
+            x = utils.generateRandomValueBetween(20, parent.width - 60)
+            y = utils.generateRandomValueBetween(-parent.height, 10)
+            floorSequenceVplay.jumpTo("1")
+            if (movement.running = true)
+                movement.running = false
+        }
+    }
 }
