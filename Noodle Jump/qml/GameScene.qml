@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import VPlay 2.0
+import QtSensors 5.5
 import "../qml/entity"
 
 Scene {
@@ -23,6 +24,10 @@ Scene {
         id:gravity
         gravity.y:9.81
         updatesPerSecondForPhysics: 60
+    }
+    Accelerometer {
+      id: accelerometer
+      active: true
     }
 
 

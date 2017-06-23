@@ -31,7 +31,9 @@ EntityBase {
               linearVelocity.y = -250
           }
       }
-          linearVelocity.x : controller.xAxis * 200
+          linearVelocity.x : system.desktopPlatform ?
+                                  twoAxisController.xAxis * 200 :  //  for desktop
+                                  (accelerometer.reading !== null ? -accelerometer.reading.x * 100 : 0)   // for mobile
     }
 
     TwoAxisController {
