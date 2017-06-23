@@ -26,46 +26,38 @@ Scene {
     }
 
 
-    Noodle {
-        id:noodle
-        x:30
-        y:350
-    }
-
     Floor {
         id:floor
         x:10
         y:400
     }
     Repeater {
-      model: 10
+      model: 15
       Floor {
 
-        x: utils.generateRandomValueBetween(0, gameScene.width) // random value
-        y: gameScene.height / 10 * index // distribute the platforms across the screen
+        x: utils.generateRandomValueBetween(20, parent.width-60) // random value
+        y: gameScene.height / 15 * index // distribute the platforms across the screen
       }
     }
 
+    Noodle {
+        id:noodle
+        x:30
+        y:350
+    }
 
-//    Component {
-//        id:component
-//        Floor {
-//            id:floors
-//        }
-//    }
+    Connections {
+        target: noodle
+        onDie:{
+            sceneState = "menu"
+            noodle.y = 350
+            noodle.x = 30
 
-//    Connections {
-//        target: floors
-//        onCreatFloor:{
-//                var newEntityProperties = {
-//                    x: utils.generateRandomValueBetween(0, gameScene.width),
-//                    y: utils.generateRandomValueBetween(-10, -20)
-//                }
-//                entityManager.createEntityFromComponentWithProperties(component,newEntityProperties)
-//            console.log("created")
+            floor.x = 10
+            floor.y = 400
+        }
+    }
 
-//        }
-//    }
 
     Keys.forwardTo: noodle.controller
 

@@ -7,9 +7,10 @@ EntityBase {
     width: 40
     height: 32
 
+    signal die
+
     property alias controller: controller
     property int impulse: y - noodleCollider.linearVelocity.y
-    property alias body: noodleCollider.body
 
     Image {
         id: noodleImage
@@ -25,16 +26,12 @@ EntityBase {
       y:25
       height: 7
       bodyType: Body.Dynamic
-      fixture.onContactChanged: {
-
-          var otherEntity = other.getBody().target
-          var otherEntityType = otherEntity.entityType
-          var otherEntityId = otherEntity.entityId
-          if(otherEntityType === "Floor" && linearVelocity.y > 0) {
-              linearVelocity.y = -300
+      fixture.onBeginContact: {     
+          if(linearVelocity.y > 0) {
+              linearVelocity.y = -250
           }
       }
-      linearVelocity.x: controller.xAxis * 200
+          linearVelocity.x : controller.xAxis * 200
     }
 
     TwoAxisController {
@@ -45,18 +42,21 @@ EntityBase {
         if(y < 150) {
             y = 150
         }
-        if(noodleCollider.linearVelocity < 0){
-            noodleCollider.bodyType = Body.Static
-        } else{
-            noodleCollider.bodyType = Body.Dynamic
+        if(noodleCollider.linearVelocity.y < -100){
+            noodleImage.source = "../../assets/noodlesnow_sit.png"
+        }else {
+            noodleImage.source = "../../assets/noodlesnow.png"
         }
+
+        if(y > parent.height)
+            die()
     }
     onXChanged: {
         if(x < 0)
         {
-            x = 640
+            x = parent.width
         }
-        if(x > 640)
+        if(x > parent.width)
         {
             x = 0
         }
@@ -66,6 +66,5 @@ EntityBase {
         } else {
             noodleImage.mirror = false
         }
-
     }
 }
