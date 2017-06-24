@@ -69,7 +69,7 @@ Scene {
     Connections {
         target: noodle
         onDie: {
-            sceneState = "menu"
+            sceneState = "gameover"
             noodle.y = 350
             noodle.x = 30
 
