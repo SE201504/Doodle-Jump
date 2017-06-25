@@ -26,10 +26,17 @@ EntityBase {
       y:25
       height: 7
       bodyType: Body.Dynamic
-      fixture.onBeginContact: {     
-          if(linearVelocity.y > 0) {
+      fixture.onBeginContact: {
+
+          var otherEntity = other.getBody().target
+          var otherEntityType = otherEntity.entityType
+
+          if (otherEntityType === "Floor" && linearVelocity.y > 0) {
               linearVelocity.y = -250
           }
+          if (otherEntityType === "BrokeFloor" && linearVelocity.y > 0) {
+          }
+
       }
           linearVelocity.x : system.desktopPlatform ?
                                   controller.xAxis * 200 :  //  for desktop
