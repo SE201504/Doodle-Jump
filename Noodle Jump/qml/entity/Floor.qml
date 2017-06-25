@@ -12,7 +12,7 @@ EntityBase {
 
     SpriteSequenceVPlay {
         id:floorSequenceVplay
-        defaultSource: "../../assets/snowresource.png"
+        defaultSource: "../../assets/snow/snowresource.png"
         anchors.fill: parent
         SpriteVPlay {
             frameCount: 1
@@ -40,8 +40,8 @@ EntityBase {
          running: noodle.y < 160
        }
       onYChanged: {
-          if(y > parent.height){
-              x = utils.generateRandomValueBetween(20, parent.width-60)
+          if(y > gameScene.height){
+              x = utils.generateRandomValueBetween(20, gameScene.width-60)
               y = 0
           }
       }

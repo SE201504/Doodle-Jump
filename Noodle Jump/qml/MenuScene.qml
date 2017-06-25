@@ -15,16 +15,18 @@ Scene {
 
 
   Image {
+    id:menuImage
     anchors.fill: menuScene.gameWindowAnchorItem
     fillMode: Image.Stretch
-    source: "../assets/snowbck.png"
+    source:gameWindow.theme === 0 ?
+        "../assets/snow/snowbck.png" :"../assets/junglebck.png"
 
     Image {
         id:bckBottom
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        source: "../assets/snowbckbottom.png"
+        source: "../assets/snow/snowbckbottom.png"
     }
   }
 

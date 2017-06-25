@@ -16,7 +16,7 @@ Scene {
     Image {
         id: gamebackImage
         anchors.fill: gameScene.gameWindowAnchorItem
-        source: "../assets/snowbck.png"
+        source: "../assets/snow/snowbck.png"
     }
 
     PhysicsWorld {
@@ -58,12 +58,6 @@ Scene {
         id: noodle
         x: 30
         y: 350
-    }
-
-    BrokeFloor {
-        id: brokeFloor
-        x: 30
-        y: 270
     }
 
     Connections {

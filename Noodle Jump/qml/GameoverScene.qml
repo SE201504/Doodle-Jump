@@ -14,7 +14,7 @@ Scene {
     Image {
         id: gamebackImage
         anchors.fill: gameScene.gameWindowAnchorItem
-        source: "../assets/snowbck.png"
+        source: "../assets/snow/snowbck.png"
     }
 
     Text {

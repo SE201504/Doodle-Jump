@@ -9,8 +9,18 @@ Scene {
     visible: opacity > 0
     enabled: visible
 
-    Text {
-        id: name
-        text: qsTr("setting  test")
+    Image {
+        id: resume
+        width: 110
+        height: 40
+        anchors.centerIn: parent
+        source: "../assets/resume.png"
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                gameWindow.theme = 1
+                gameWindow.state = "menu"
+            }
+        }
     }
 }

@@ -15,7 +15,7 @@ EntityBase {
 
     Image {
         id: noodleImage
-        source: "../../assets/noodlesnow.png"
+        source: "../../assets/snow/noodlesnow.png"
         anchors.fill: parent
     }
 
@@ -53,20 +53,20 @@ EntityBase {
             y = 150
         }
         if(noodleCollider.linearVelocity.y < -100){
-            noodleImage.source = "../../assets/noodlesnow_sit.png"
+            noodleImage.source = "../../assets/snow/noodlesnow_sit.png"
         }else {
-            noodleImage.source = "../../assets/noodlesnow.png"
+            noodleImage.source = "../../assets/snow/noodlesnow.png"
         }
 
-        if(y > parent.height)
+        if(y > gameScene.height)
             die()
     }
     onXChanged: {
         if(x < 0)
         {
-            x = parent.width
+            x = gameScene.width
         }
-        if(x > parent.width)
+        if(x > gameScene.width)
         {
             x = 0
         }

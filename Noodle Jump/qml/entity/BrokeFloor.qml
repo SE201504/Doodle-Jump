@@ -11,12 +11,13 @@ EntityBase {
 
     SpriteSequenceVPlay {
         id: floorSequenceVplay
-        defaultSource: "../../assets/brokeFloor.png"
+        defaultSource: "../../assets/snow/snowresource.png"
         anchors.fill: parent
 
         SpriteVPlay {
             name: "1"
             frameCount: 1
+            frameY:144
             frameWidth: 120
             frameHeight: 32
             frameRate: 0
@@ -24,7 +25,7 @@ EntityBase {
         SpriteVPlay {
             name: "2"
             frameCount: 1
-            frameY: 32
+            frameY: 176
             frameWidth: 120
             frameHeight: 48
             frameRate: 5
@@ -35,7 +36,7 @@ EntityBase {
         SpriteVPlay {
             name: "3"
             frameCount: 1
-            frameY: 80
+            frameY: 224
             frameWidth: 120
             frameHeight: 64
             frameRate: 5
@@ -46,7 +47,7 @@ EntityBase {
         SpriteVPlay {
             name: "4"
             frameCount: 1
-            frameY: 160
+            frameY: 304
             frameWidth: 120
             frameHeight: 55
             frameRate: 1
@@ -67,6 +68,7 @@ EntityBase {
             if (otherEntityType === "noodle" && noodle.linevelocityY > 0) {
                 floorSequenceVplay.jumpTo("2")
                 movement.running = true
+                movement2.running = true
             }
         }
     }
@@ -83,13 +85,21 @@ EntityBase {
         velocity: noodle.impulse / 2
         running: noodle.y < 160
     }
+    NumberAnimation {
+        id:movement2
+        target: floorSequenceVplay
+        property: "opacity"
+        to: 0
+        duration: 1000
+    }
+
     onYChanged: {
-        if (y > parent.height) {
-            x = utils.generateRandomValueBetween(20, parent.width - 60)
+        if (y > gameScene.height) {
+            x = utils.generateRandomValueBetween(20, gameScene.width - 60)
             y = utils.generateRandomValueBetween(-parent.height, 10)
             floorSequenceVplay.jumpTo("1")
-            if (movement.running = true)
                 movement.running = false
+                brokeFloor.opacity = 1
         }
     }
 }
