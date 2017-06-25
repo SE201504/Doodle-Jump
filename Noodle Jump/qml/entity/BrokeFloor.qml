@@ -64,7 +64,7 @@ EntityBase {
             var otherEntity = other.getBody().target
             var otherEntityType = otherEntity.entityType
 
-            if (otherEntityType === "noodle") {
+            if (otherEntityType === "noodle" && noodle.linevelocityY > 0) {
                 floorSequenceVplay.jumpTo("2")
                 movement.running = true
             }

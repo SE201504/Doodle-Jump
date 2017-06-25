@@ -10,6 +10,7 @@ EntityBase {
     signal die
 
     property alias controller: controller
+    property alias linevelocityY: noodleCollider.linearVelocity.y
     property int impulse: y - noodleCollider.linearVelocity.y
 
     Image {
