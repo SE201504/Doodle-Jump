@@ -25,6 +25,21 @@ Scene {
                        }
     }
 
+    Image {
+        width: 32
+        height: 32
+        x:10
+        y:10
+        source: "../assets/ppause.png"
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                pause()
+            }
+        }
+    }
+
     PhysicsWorld {
         id: gravity
         gravity.y: 9.81

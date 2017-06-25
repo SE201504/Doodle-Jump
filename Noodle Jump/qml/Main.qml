@@ -38,6 +38,9 @@ GameWindow {
     }
     PauseScene {
         id: pauseScene
+        onResume: {
+            gameWindow.state = "game"
+        }
     }
     GameoverScene {
         id: gameoverScene
