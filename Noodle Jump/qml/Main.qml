@@ -34,7 +34,6 @@ GameWindow {
         id: gameScene
         onPause: {
             gameWindow.state = "pause"
-            ga.logEvent("Click", "PauseScene")
         }
     }
     PauseScene {

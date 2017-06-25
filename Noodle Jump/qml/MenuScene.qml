@@ -18,15 +18,27 @@ Scene {
     id:menuImage
     anchors.fill: menuScene.gameWindowAnchorItem
     fillMode: Image.Stretch
-    source:gameWindow.theme === 0 ?
-        "../assets/snow/snowbck.png" :"../assets/junglebck.png"
+    source:if(gameWindow.theme === 0){
+        "../assets/snow/snowbck.png"
+           }else if(gameWindow.theme === 1){
+               "../assets/bunny/hopbck_X.png"
+           }else if(gameWindow.theme === 2){
+               "../assets/ninja/ghostbck_X.png"
+           }
 
     Image {
         id:bckBottom
+        height: 30
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        source: "../assets/snow/snowbckbottom.png"
+        source:if(gameWindow.theme === 0){
+                   "../assets/snow/snowbckbottom.png"
+                      }else if(gameWindow.theme === 1){
+                          "../assets/bunny/hopbottom_X.png"
+                      }else if(gameWindow.theme === 2){
+                          "../assets/ninja/ghostland_X.png"
+                      }
     }
   }
 
@@ -38,7 +50,8 @@ Scene {
       anchors.margins: 20
       anchors.left: parent.left
       anchors.leftMargin: 10
-      source: "../assets/doodle-jump.png"
+      source:
+          "../assets/doodle-jump.png"
   }
 
   PhysicsWorld {

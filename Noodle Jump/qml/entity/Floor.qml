@@ -12,11 +12,17 @@ EntityBase {
 
     SpriteSequenceVPlay {
         id:floorSequenceVplay
-        defaultSource: "../../assets/snow/snowresource.png"
+        defaultSource: if(gameWindow.theme === 0){
+                           "../../assets/snow/snowresource.png"
+                              }else if(gameWindow.theme === 1){
+                                  "../../assets/bunny/gametilesbunny_X.png"
+                              }else if(gameWindow.theme === 2){
+                                  "../../assets/ninja/game-tiles-ninja_X.png"
+                              }
         anchors.fill: parent
         SpriteVPlay {
             frameCount: 1
-            frameWidth: 112
+            frameWidth: 116
             frameHeight: 32
         }
     }

@@ -15,7 +15,14 @@ EntityBase {
 
     Image {
         id: noodleImage
-        source: "../../assets/snow/noodlesnow.png"
+        source:
+            if(gameWindow.theme === 0){
+                    "../../assets/snow/noodlesnow.png"
+                       }else if(gameWindow.theme === 1){
+                           "../../assets/bunny/bunnyleft_X.png"
+                       }else if(gameWindow.theme === 2){
+                           "../../assets/ninja/ninja-left_X.png"
+                       }
         anchors.fill: parent
     }
 
@@ -53,10 +60,21 @@ EntityBase {
             y = 150
         }
         if(noodleCollider.linearVelocity.y < -100){
-            noodleImage.source = "../../assets/snow/noodlesnow_sit.png"
-        }else {
-            noodleImage.source = "../../assets/snow/noodlesnow.png"
-        }
+            if(gameWindow.theme === 0){
+                    noodleImage.source =  "../../assets/snow/noodlesnow_sit.png"
+                       }else if(gameWindow.theme === 1){
+                           noodleImage.source = "../../assets/bunny/bunnyleftodskok_X.png"
+                       }else if(gameWindow.theme === 2){
+                           noodleImage.source = "../../assets/ninja/ninja-left-odskok_X.png"
+                       }
+
+        }else if(gameWindow.theme === 0){
+            noodleImage.source =  "../../assets/snow/noodlesnow.png"
+               }else if(gameWindow.theme === 1){
+                   noodleImage.source = "../../assets/bunny/bunnyleft_X.png"
+               }else if(gameWindow.theme === 2){
+                   noodleImage.source = "../../assets/ninja/ninja-left_X.png"
+               }
 
         if(y > gameScene.height)
             die()
@@ -72,9 +90,9 @@ EntityBase {
         }
 
         if(controller.xAxis < 0) {
-            noodleImage.mirror = true
-        } else {
             noodleImage.mirror = false
+        } else {
+            noodleImage.mirror = true
         }
     }
 }
