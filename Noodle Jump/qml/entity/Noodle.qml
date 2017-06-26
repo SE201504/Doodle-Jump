@@ -95,4 +95,5 @@ EntityBase {
             noodleImage.mirror = true
         }
     }
+
 }

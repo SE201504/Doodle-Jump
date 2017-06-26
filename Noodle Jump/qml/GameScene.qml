@@ -74,6 +74,11 @@ Scene {
             y: gameScene.height / 5 * index // distribute the platforms across the screen
         }
     }
+    Monster {
+        id:monster
+        x:50
+        y:300
+    }
 
     Noodle {
         id: noodle
@@ -92,6 +97,5 @@ Scene {
             floor.y = 400
         }
     }
-
     Keys.forwardTo: noodle.controller
 }

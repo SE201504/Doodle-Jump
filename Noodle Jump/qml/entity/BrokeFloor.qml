@@ -106,7 +106,7 @@ EntityBase {
             y = utils.generateRandomValueBetween(-parent.height, 10)
             floorSequenceVplay.jumpTo("1")
                 movement.running = false
-                brokeFloor.opacity = 1
+                brokefloor.opacity = 1
         }
     }
 }
