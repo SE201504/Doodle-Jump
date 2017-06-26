@@ -51,19 +51,24 @@ EntityBase {
     MovementAnimation {
         id: movement1
         target: floor
-        property: 'x'
+        property: if (type === 1) {
+                      "x"
+                  } else if (type === 2) {
+                      "y"
+                  }
+
         velocity: 50
         running: type === 0 ? false : true
     }
 
     onYChanged: {
         if (y > gameScene.height) {
-            if(type !== 0){
+            if (type !== 0) {
                 floor.entityDestroyed()
             } else {
-            type = 0
-            x = utils.generateRandomValueBetween(20, gameScene.width - 60)
-            y = 0
+                type = 0
+                x = utils.generateRandomValueBetween(20, gameScene.width - 60)
+                y = 0
             }
         }
     }

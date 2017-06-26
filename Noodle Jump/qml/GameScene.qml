@@ -16,20 +16,20 @@ Scene {
     Image {
         id: gamebackImage
         anchors.fill: gameScene.gameWindowAnchorItem
-        source: if(gameWindow.theme === 0){
+        source: if (gameWindow.theme === 0) {
                     "../assets/snow/snowbck.png"
-                       }else if(gameWindow.theme === 1){
-                           "../assets/bunny/hopbck_X.png"
-                       }else if(gameWindow.theme === 2){
-                           "../assets/ninja/ghostbck_X.png"
-                       }
+                } else if (gameWindow.theme === 1) {
+                    "../assets/bunny/hopbck_X.png"
+                } else if (gameWindow.theme === 2) {
+                    "../assets/ninja/ghostbck_X.png"
+                }
     }
 
     Image {
         width: 32
         height: 32
-        x:10
-        y:10
+        x: 10
+        y: 10
         source: "../assets/ppause.png"
 
         MouseArea {
@@ -54,8 +54,14 @@ Scene {
         id: floor
         x: 10
         y: 400
-        type : 0
+        type: 0
     }
+
+    Spring {
+        x: 30
+        y: 300
+    }
+
     Repeater {
         model: 15
         Floor {
@@ -88,38 +94,38 @@ Scene {
         }
     }
     Component {
-        id:monsterComponent
+        id: monsterComponent
         Monster {
-            id:monster
-            x:50
-            y:-10
+            id: monster
+            x: 50
+            y: -10
         }
     }
     Component {
-        id:floorComponent
+        id: floorComponent
         Floor {
-            x:50
-            y:0
+            x: 50
+            y: 0
         }
     }
     Connections {
         target: manager
-        onMonsterCreate:{
+        onMonsterCreate: {
             var newProperty = {
-                x:Math.random()*gameScene.width,
-                y:manager.monsterPosition()
+                x: Math.random() * gameScene.width,
+                y: manager.monsterPosition()
             }
-            entityManager.createEntityFromComponentWithProperties(monsterComponent,
-                        newProperty)
+            entityManager.createEntityFromComponentWithProperties(
+                        monsterComponent, newProperty)
         }
-        onFloorCreate:{
+        onFloorCreate: {
             var newProperty = {
-                x:utils.generateRandomValueBetween(100, gameScene.width - 140),
-                y:0,
-                type: 1
+                x: utils.generateRandomValueBetween(100, gameScene.width - 140),
+                y: 0,
+                type: utils.generateRandomValueBetween(0, 4) > 2 ? 1 : 2
             }
-            entityManager.createEntityFromComponentWithProperties(floorComponent,
-                        newProperty)
+            entityManager.createEntityFromComponentWithProperties(
+                        floorComponent, newProperty)
         }
     }
     Noodle {
