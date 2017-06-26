@@ -10,11 +10,30 @@ Scene {
     enabled: visible
 
     Image {
+        id: resume
+        width: 110
+        height: 40
+        anchors.bottom: settingScene.gameWindowAnchorItem.bottom
+        anchors.bottomMargin: 15
+        x: parent.width / 2
+        source: "../assets/resume.png"
+        scale: 0.7
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                gameWindow.state = "menu"
+            }
+        }
+    }
+
+    Image {
         id: theme0
-        width: parent.width
-        height: parent.height
-        anchors.left: parent.left
-        anchors.top: parent.top
+        width: (settingScene.gameWindowAnchorItem.width / 10) * 9
+        height: (settingScene.gameWindowAnchorItem.height / 6) * 5
+        anchors.topMargin: 1
+        anchors.leftMargin: 10
+        anchors.left: settingScene.gameWindowAnchorItem.left
+        anchors.top: settingScene.gameWindowAnchorItem.top
         source: "../assets/snow/snowthem.png"
 
         MouseArea {
@@ -28,8 +47,10 @@ Scene {
     Image {
         visible: false
         id: theme1
-        width: parent.width
-        height: parent.height
+        width: (settingScene.gameWindowAnchorItem.width / 10) * 9
+        height: (settingScene.gameWindowAnchorItem.height / 6) * 5
+        anchors.topMargin: 1
+        anchors.leftMargin: 10
         anchors.left: parent.left
         anchors.top: parent.top
         source: "../assets/bunny/bunnythem.png"
@@ -44,8 +65,10 @@ Scene {
     Image {
         visible: false
         id: theme2
-        width: parent.width
-        height: parent.height
+        width: (settingScene.gameWindowAnchorItem.width / 10) * 9
+        height: (settingScene.gameWindowAnchorItem.height / 6) * 5
+        anchors.topMargin: 1
+        anchors.leftMargin: 10
         anchors.left: parent.left
         anchors.top: parent.top
         source: "../assets/ninja/ninjathem.png"
@@ -61,8 +84,8 @@ Scene {
         visible: false
         id: leftselect
         source: "../assets/leftselect.svg"
-        anchors.top: theme0.bottom
-        anchors.topMargin: 20
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 30
         x: parent.width / 12
         scale: 0.8
         MouseArea {
@@ -90,8 +113,8 @@ Scene {
     Image {
         id: rightselect
         source: "../assets/rightselect.svg"
-        anchors.top: theme0.bottom
-        anchors.topMargin: 20
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 30
         anchors.left: leftselect.right
         anchors.leftMargin: 10
         scale: 0.8
@@ -112,22 +135,6 @@ Scene {
                     theme1.visible = false
                     theme2.visible = true
                 }
-            }
-        }
-    }
-    Image {
-        id: resume
-        width: 110
-        height: 40
-        anchors.bottom: settingScene.bottom
-        anchors.bottomMargin: 5
-        x: parent.width / 2
-        source: "../assets/resume.png"
-        scale: 0.7
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                gameWindow.state = "menu"
             }
         }
     }
