@@ -54,6 +54,7 @@ Scene {
         id: floor
         x: 10
         y: 400
+        type : 0
     }
     Repeater {
         model: 15
@@ -74,17 +75,6 @@ Scene {
             y: gameScene.height / 5 * index // distribute the platforms across the screen
         }
     }
-    Monster {
-        id:monster
-        x:50
-        y:300
-    }
-
-    Noodle {
-        id: noodle
-        x: 30
-        y: 350
-    }
 
     Connections {
         target: noodle
@@ -97,5 +87,46 @@ Scene {
             floor.y = 400
         }
     }
+    Component {
+        id:monsterComponent
+        Monster {
+            id:monster
+            x:50
+            y:-10
+        }
+    }
+    Component {
+        id:floorComponent
+        Floor {
+            x:50
+            y:0
+        }
+    }
+    Connections {
+        target: manager
+        onMonsterCreate:{
+            var newProperty = {
+                x:Math.random()*gameScene.width,
+                y:manager.monsterPosition()
+            }
+            entityManager.createEntityFromComponentWithProperties(monsterComponent,
+                        newProperty)
+        }
+        onFloorCreate:{
+            var newProperty = {
+                x:utils.generateRandomValueBetween(100, gameScene.width - 140),
+                y:0,
+                type: 1
+            }
+            entityManager.createEntityFromComponentWithProperties(floorComponent,
+                        newProperty)
+        }
+    }
+    Noodle {
+        id: noodle
+        x: 30
+        y: 350
+    }
+
     Keys.forwardTo: noodle.controller
 }

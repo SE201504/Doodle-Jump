@@ -10,28 +10,9 @@ Scene {
     enabled: visible
 
     Image {
-        id: resume
-        width: 110
-        height: 40
-        anchors.bottom: settingScene.bottom
-        anchors.bottomMargin: 5
-        x: parent.width / 2
-        source: "../assets/resume.png"
-        scale: 0.7
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                gameWindow.state = "menu"
-            }
-        }
-    }
-
-    Image {
         id: theme0
-        width: (gameWindow.width / 10) * 7
-        height: (gameWindow.height / 12) * 7
-        anchors.topMargin: 1
-        anchors.leftMargin: 10
+        width: parent.width
+        height: parent.height
         anchors.left: parent.left
         anchors.top: parent.top
         source: "../assets/snow/snowthem.png"
@@ -47,10 +28,8 @@ Scene {
     Image {
         visible: false
         id: theme1
-        width: (gameWindow.width / 10) * 7
-        height: (gameWindow.height / 12) * 7
-        anchors.topMargin: 1
-        anchors.leftMargin: 10
+        width: parent.width
+        height: parent.height
         anchors.left: parent.left
         anchors.top: parent.top
         source: "../assets/bunny/bunnythem.png"
@@ -65,10 +44,8 @@ Scene {
     Image {
         visible: false
         id: theme2
-        width: (gameWindow.width / 10) * 7
-        height: (gameWindow.height / 12) * 7
-        anchors.topMargin: 1
-        anchors.leftMargin: 10
+        width: parent.width
+        height: parent.height
         anchors.left: parent.left
         anchors.top: parent.top
         source: "../assets/ninja/ninjathem.png"
@@ -135,6 +112,22 @@ Scene {
                     theme1.visible = false
                     theme2.visible = true
                 }
+            }
+        }
+    }
+    Image {
+        id: resume
+        width: 110
+        height: 40
+        anchors.bottom: settingScene.bottom
+        anchors.bottomMargin: 5
+        x: parent.width / 2
+        source: "../assets/resume.png"
+        scale: 0.7
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                gameWindow.state = "menu"
             }
         }
     }

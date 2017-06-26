@@ -42,8 +42,6 @@ EntityBase {
           if (otherEntityType === "Floor" && linearVelocity.y > 0) {
               linearVelocity.y = -250
           }
-          if (otherEntityType === "BrokeFloor" && linearVelocity.y > 0) {
-          }
 
       }
           linearVelocity.x : system.desktopPlatform ?
@@ -58,6 +56,7 @@ EntityBase {
     onYChanged: {
         if(y < 150) {
             y = 150
+            manager.heightChanged(10)
         }
         if(noodleCollider.linearVelocity.y < -100){
             if(gameWindow.theme === 0){

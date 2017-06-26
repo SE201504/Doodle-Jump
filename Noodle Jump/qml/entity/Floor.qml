@@ -58,13 +58,13 @@ EntityBase {
 
     onYChanged: {
         if (y > gameScene.height) {
-            if (10 < utils.generateRandomValueBetween(5, 15)) {
-                type = 1
+            if(type !== 0){
+                floor.entityDestroyed()
             } else {
-                type = 0
-            }
+            type = 0
             x = utils.generateRandomValueBetween(20, gameScene.width - 60)
             y = 0
+            }
         }
     }
 
