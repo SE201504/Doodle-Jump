@@ -33,11 +33,11 @@ Scene {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         source:if(gameWindow.theme === 0){
-                   "../assets/snow/snowbckbottom.png"
+                   "../assets/snow/bottom.png"
                       }else if(gameWindow.theme === 1){
-                          "../assets/bunny/hopbottom_X.png"
+                          "../assets/bunny/bottom.png"
                       }else if(gameWindow.theme === 2){
-                          "../assets/ninja/ghostland_X.png"
+                          "../assets/ninja/bottom.png"
                       }
     }
   }

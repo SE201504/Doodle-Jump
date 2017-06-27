@@ -23,6 +23,21 @@ Scene {
                 } else if (gameWindow.theme === 2) {
                     "../assets/ninja/ghostbck_X.png"
                 }
+
+        Image {
+            id:bckBottom
+            height: 30
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.bottom: parent.bottom
+            source:if(gameWindow.theme === 0){
+                       "../assets/snow/bottom.png"
+                          }else if(gameWindow.theme === 1){
+                              "../assets/bunny/bottom.png"
+                          }else if(gameWindow.theme === 2){
+                              "../assets/ninja/bottom.png"
+                          }
+        }
     }
 
     Image {

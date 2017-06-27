@@ -5,7 +5,7 @@
 Controller::Controller(QObject *parent) : QObject(parent),m_height(0),m_monsterPosition(0),m_floorPosition(0)
   ,m_springPosition(0)
 {
-    QFile file("./qml/myconfig.json");
+    QFile file("./assets/myconfig.json");
     file.open(QIODevice::ReadOnly);
     QByteArray json = file.readAll();
 
@@ -63,7 +63,7 @@ void Controller::themeChanged(int _theme){
 
         QJsonDocument jsonDoc(themeObject);
         QByteArray ba = jsonDoc.toJson();
-        QFile file("./qml/myconfig.json");
+        QFile file("./assets/myconfig.json");
         if(!file.open(QIODevice::WriteOnly))
         {
             qDebug() << "write json file failed";
