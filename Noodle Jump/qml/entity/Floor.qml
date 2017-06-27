@@ -25,7 +25,7 @@ EntityBase {
             frameCount: 1
             frameWidth: 116
             frameHeight: 32
-            frameY: type === 0 ? 0 : 110
+            frameY: type === 1 ? 110 : 0
         }
     }
 
@@ -69,11 +69,10 @@ EntityBase {
                 type = 0
                 x = utils.generateRandomValueBetween(20, gameScene.width - 60)
                 y = 0
-                manager.springChanged(x,y)
+                manager.springChanged(x, y)
             }
         }
     }
-
 
     onXChanged: {
 
