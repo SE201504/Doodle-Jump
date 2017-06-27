@@ -35,9 +35,7 @@ EntityBase {
     BoxCollider {
         id: springCollider
         width: 20
-        x: 10
-        y: 25
-        height: 7
+        height: 20
         bodyType: Body.Dynamic
         collisionTestingOnlyMode: true
         fixture.onBeginContact: {

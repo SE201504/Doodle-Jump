@@ -57,8 +57,7 @@ EntityBase {
        }
       onYChanged: {
           if(y > gameScene.height){
-              x = utils.generateRandomValueBetween(20, gameScene.width-60)
-              y = utils.generateRandomValueBetween(-1000, -3000)
+              entityDestroyed()
           }
       }
 

@@ -57,11 +57,6 @@ Scene {
         type: 0
     }
 
-    Spring {
-        x: 30
-        y: 300
-    }
-
     Repeater {
         model: 15
         Floor {
@@ -108,6 +103,11 @@ Scene {
             y: 0
         }
     }
+    Component {
+        id: springComponent
+        Spring {
+        }
+    }
     Connections {
         target: manager
         onMonsterCreate: {
@@ -126,6 +126,14 @@ Scene {
             }
             entityManager.createEntityFromComponentWithProperties(
                         floorComponent, newProperty)
+        }
+        onSpringCreate:{
+            var newProperty = {
+                x: utils.generateRandomValueBetween(manager.springPositionX()-10,manager.springPositionX()+30),
+                y: manager.springPositionY(),
+            }
+            entityManager.createEntityFromComponentWithProperties(
+                        springComponent, newProperty)
         }
     }
     Noodle {

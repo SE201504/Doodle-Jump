@@ -21,6 +21,7 @@ Scene {
         MouseArea {
             anchors.fill: parent
             onClicked: {
+                manager.themeChanged(gameWindow.theme)
                 gameWindow.state = "menu"
             }
         }

@@ -45,7 +45,8 @@ macx {
 
 DISTFILES += \
     qml/entity/Monster.qml \
-    qml/entity/Spring.qml
+    qml/entity/Spring.qml \
+    config.json
 
 HEADERS += \
     controller.h
