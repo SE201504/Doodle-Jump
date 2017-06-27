@@ -36,7 +36,7 @@ Scene {
         width: (settingScene.gameWindowAnchorItem.width / 10) * 9
         height: (settingScene.gameWindowAnchorItem.height / 6) * 5
         anchors.topMargin: 1
-        anchors.leftMargin: 10
+        anchors.leftMargin: 13
         anchors.left: settingScene.gameWindowAnchorItem.left
         anchors.top: settingScene.gameWindowAnchorItem.top
         source: "../assets/snow/snowthem.png"
@@ -60,9 +60,9 @@ Scene {
         width: (settingScene.gameWindowAnchorItem.width / 10) * 9
         height: (settingScene.gameWindowAnchorItem.height / 6) * 5
         anchors.topMargin: 1
-        anchors.leftMargin: 10
-        anchors.left: parent.left
-        anchors.top: parent.top
+        anchors.leftMargin: 13
+        anchors.left: settingScene.gameWindowAnchorItem.left
+        anchors.top: settingScene.gameWindowAnchorItem.top
         source: "../assets/bunny/bunnythem.png"
         MouseArea {
             anchors.fill: parent
@@ -82,9 +82,9 @@ Scene {
         width: (settingScene.gameWindowAnchorItem.width / 10) * 9
         height: (settingScene.gameWindowAnchorItem.height / 6) * 5
         anchors.topMargin: 1
-        anchors.leftMargin: 10
-        anchors.left: parent.left
-        anchors.top: parent.top
+        anchors.leftMargin: 13
+        anchors.left: settingScene.gameWindowAnchorItem.left
+        anchors.top: settingScene.gameWindowAnchorItem.top
         source: "../assets/ninja/ninjathem.png"
         MouseArea {
             anchors.fill: parent
@@ -102,9 +102,10 @@ Scene {
                      true
                  }
         source: "../assets/leftselect.svg"
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 30
-        x: parent.width / 12
+        anchors.bottom: settingScene.gameWindowAnchorItem.bottom
+        anchors.bottomMargin: 35
+        anchors.left: settingScene.gameWindowAnchorItem.left
+        anchors.leftMargin: 25
         scale: 0.8
         MouseArea {
             anchors.fill: parent
@@ -133,10 +134,10 @@ Scene {
                  }
 
         source: "../assets/rightselect.svg"
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 30
+        anchors.bottom: settingScene.gameWindowAnchorItem.bottom
+        anchors.bottomMargin: 35
         anchors.left: leftselect.right
-        anchors.leftMargin: 10
+        anchors.leftMargin: 20
         scale: 0.8
         MouseArea {
             anchors.fill: parent

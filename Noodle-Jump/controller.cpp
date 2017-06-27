@@ -3,7 +3,7 @@
 #include <ostream>
 
 Controller::Controller(QObject *parent) : QObject(parent),m_height(0),m_monsterPosition(0),m_floorPosition(0)
-  ,m_springPosition(0),m_springCreatePositionX(0),m_springCreatePositionY(0)
+  ,m_springPosition(0)
 {
     QFile file("./qml/myconfig.json");
     file.open(QIODevice::ReadOnly);
@@ -77,17 +77,5 @@ void Controller::springPositionChanged(){
         emit springCreate();
     }
 }
-double Controller::springPositionX(){
-    return m_springCreatePositionX;
-    m_springCreatePositionX = 0;
-}
-double Controller::springPositionY(){
-    return m_springCreatePositionY;
-    m_springCreatePositionY = 0;
-}
 
-void Controller::springChanged(double x,double y){
-    m_springCreatePositionX = x;
-    m_springCreatePositionY = y;
-}
 

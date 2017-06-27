@@ -69,7 +69,6 @@ EntityBase {
                 type = 0
                 x = utils.generateRandomValueBetween(20, gameScene.width - 60)
                 y = 0
-                manager.springChanged(x, y)
             }
         }
     }

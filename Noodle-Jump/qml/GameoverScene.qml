@@ -13,7 +13,7 @@ Scene {
 
     Image {
         id: gamebackImage
-        anchors.fill: gameScene.gameWindowAnchorItem
+        anchors.fill: gameoverScene.gameWindowAnchorItem
         source: if(gameWindow.theme === 0){
                     "../assets/snow/snowbck.png"
                        }else if(gameWindow.theme === 1){

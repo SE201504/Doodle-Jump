@@ -127,10 +127,10 @@ Scene {
             entityManager.createEntityFromComponentWithProperties(
                         floorComponent, newProperty)
         }
-        onSpringCreate:{
+        onSpringCreate: {
             var newProperty = {
-                x: utils.generateRandomValueBetween(manager.springPositionX()-10,manager.springPositionX()+30),
-                y: manager.springPositionY(),
+                x: utils.generateRandomValueBetween(100, gameScene.width - 140),
+                y: -20
             }
             entityManager.createEntityFromComponentWithProperties(
                         springComponent, newProperty)

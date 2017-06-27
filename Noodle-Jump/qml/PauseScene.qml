@@ -12,7 +12,7 @@ Scene {
 
     Image {
         id: pausebackImage
-        anchors.fill: parent
+        anchors.fill: pauseScene.gameWindowAnchorItem
         source: "../assets/pausecover.png"
     }
 

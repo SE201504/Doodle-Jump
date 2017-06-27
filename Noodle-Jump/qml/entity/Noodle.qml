@@ -7,6 +7,7 @@ EntityBase {
     entityType: "noodle"
     width: 40
     height: 32
+    poolingEnabled: true
 
     signal die
 
@@ -97,10 +98,16 @@ EntityBase {
             x = 0
         }
 
-        if (controller.xAxis < 0) {
+        if (noodleCollider.linearVelocity.x < 0) {
             noodleImage.mirror = false
         } else {
             noodleImage.mirror = true
         }
+
+        //        if(accelerometer.reading.x > 0){
+        //            noodleImage.mirror = true
+        //        }else {
+        //            noodleImage.mirror = false
+        //        }
     }
 }
