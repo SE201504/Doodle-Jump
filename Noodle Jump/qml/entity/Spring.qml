@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import VPlay 2.0
+import QtMultimedia 5.5
 
 EntityBase {
     id: springFloor
@@ -46,6 +47,7 @@ EntityBase {
             if (otherEntityType === "noodle" && linearVelocity.y > 0) {
                 noodle.linevelocityY = -600
                 springSequenceVplay.jumpTo("springDown")
+                ntssound.play()
             }
         }
     }
@@ -61,5 +63,10 @@ EntityBase {
         property: "y"
         velocity: noodle.impulse / 2
         running: noodle.y < 160
+    }
+
+    Audio {
+        id: ntssound
+        source: "../../assets/sound/trampoline.mp3"
     }
 }

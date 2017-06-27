@@ -21,7 +21,6 @@ Scene {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                manager.themeChanged(gameWindow.theme)
                 gameWindow.state = "menu"
             }
         }
@@ -29,6 +28,11 @@ Scene {
 
     Image {
         id: theme0
+        visible: if (gameWindow.theme === 0) {
+                     true
+                 } else {
+                     false
+                 }
         width: (settingScene.gameWindowAnchorItem.width / 10) * 9
         height: (settingScene.gameWindowAnchorItem.height / 6) * 5
         anchors.topMargin: 1
@@ -46,7 +50,12 @@ Scene {
     }
 
     Image {
-        visible: false
+        visible: if (gameWindow.theme === 1) {
+                     true
+                 } else {
+                     false
+                 }
+
         id: theme1
         width: (settingScene.gameWindowAnchorItem.width / 10) * 9
         height: (settingScene.gameWindowAnchorItem.height / 6) * 5
@@ -64,7 +73,11 @@ Scene {
     }
 
     Image {
-        visible: false
+        visible: if (gameWindow.theme === 2) {
+                     true
+                 } else {
+                     false
+                 }
         id: theme2
         width: (settingScene.gameWindowAnchorItem.width / 10) * 9
         height: (settingScene.gameWindowAnchorItem.height / 6) * 5
@@ -82,8 +95,12 @@ Scene {
     }
 
     Image {
-        visible: false
         id: leftselect
+        visible: if (gameWindow.theme === 0) {
+                     false
+                 } else {
+                     true
+                 }
         source: "../assets/leftselect.svg"
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 30
@@ -94,15 +111,11 @@ Scene {
             onClicked: {
                 if (gameWindow.theme === 2) {
                     gameWindow.theme = 1
-                    leftselect.visible = true
-                    rightselect.visible = true
                     theme0.visible = false
                     theme1.visible = true
                     theme2.visible = false
                 } else if (gameWindow.theme === 1) {
                     gameWindow.theme = 0
-                    rightselect.visible = true
-                    leftselect.visible = false
                     theme0.visible = true
                     theme1.visible = false
                     theme2.visible = false
@@ -113,6 +126,12 @@ Scene {
 
     Image {
         id: rightselect
+        visible: if (gameWindow.theme === 2) {
+                     false
+                 } else {
+                     true
+                 }
+
         source: "../assets/rightselect.svg"
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 30
@@ -124,14 +143,11 @@ Scene {
             onClicked: {
                 if (gameWindow.theme === 0) {
                     gameWindow.theme = 1
-                    leftselect.visible = true
                     theme0.visible = false
                     theme1.visible = true
                     theme2.visible = false
                 } else if (gameWindow.theme === 1) {
                     gameWindow.theme = 2
-                    leftselect.visible = true
-                    rightselect.visible = false
                     theme0.visible = false
                     theme1.visible = false
                     theme2.visible = true

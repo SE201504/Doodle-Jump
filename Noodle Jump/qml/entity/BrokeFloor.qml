@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import VPlay 2.0
+import QtMultimedia 5.5
 
 EntityBase {
     id: brokefloor
@@ -11,12 +12,11 @@ EntityBase {
 
     SpriteSequenceVPlay {
         id: floorSequenceVplay
-        defaultSource:
-            if(gameWindow.theme === 0){
-                    "../../assets/snow/snowresource.png"
-                       }else if(gameWindow.theme === 1){
+        defaultSource: if (gameWindow.theme === 0) {
+                           "../../assets/snow/snowresource.png"
+                       } else if (gameWindow.theme === 1) {
                            "../../assets/bunny/gametilesbunny_X.png"
-                       }else if(gameWindow.theme === 2){
+                       } else if (gameWindow.theme === 2) {
                            "../../assets/ninja/game-tiles-ninja_X.png"
                        }
         anchors.fill: parent
@@ -24,7 +24,7 @@ EntityBase {
         SpriteVPlay {
             name: "1"
             frameCount: 1
-            frameY:144
+            frameY: 144
             frameWidth: 120
             frameHeight: 32
             frameRate: 0
@@ -76,6 +76,7 @@ EntityBase {
                 floorSequenceVplay.jumpTo("2")
                 movement.running = true
                 movement2.running = true
+                breaksound.play()
             }
         }
     }
@@ -93,7 +94,7 @@ EntityBase {
         running: noodle.y < 160
     }
     NumberAnimation {
-        id:movement2
+        id: movement2
         target: floorSequenceVplay
         property: "opacity"
         to: 0
@@ -105,8 +106,12 @@ EntityBase {
             x = utils.generateRandomValueBetween(20, gameScene.width - 60)
             y = utils.generateRandomValueBetween(-parent.height, 10)
             floorSequenceVplay.jumpTo("1")
-                movement.running = false
-                brokefloor.opacity = 1
+            movement.running = false
+            brokefloor.opacity = 1
         }
+    }
+    Audio {
+        id: breaksound
+        source: "../../assets/sound/floorbreak.mp3"
     }
 }
