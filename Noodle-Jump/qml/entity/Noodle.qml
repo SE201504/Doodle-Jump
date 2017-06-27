@@ -98,7 +98,7 @@ EntityBase {
             x = 0
         }
 
-        if (noodleCollider.linearVelocity.x < 0) {
+        if (noodleCollider.linearVelocity.x < 50) {
             noodleImage.mirror = false
         } else {
             noodleImage.mirror = true

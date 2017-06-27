@@ -13,7 +13,13 @@ EntityBase {
     SpriteSequenceVPlay {
         id: springSequenceVplay
         visible: true
-        defaultSource: "../../assets/snow/snowresource.png"
+        defaultSource: if (gameWindow.theme === 0) {
+                           "../../assets/snow/snowresource.png"
+                       } else if (gameWindow.theme === 1) {
+                           "../../assets/bunny/gametilesbunny_X.png"
+                       } else if (gameWindow.theme === 2) {
+                           "../../assets/ninja/game-tiles-ninja_X.png"
+                       }
         anchors.fill: parent
 
         SpriteVPlay {
@@ -23,6 +29,11 @@ EntityBase {
             frameY: 185
             frameWidth: 80
             frameHeight: 35
+            frameRate: 5
+            //            to: {
+            //                springDown: 0
+            //                spring: 1
+            //            }
         }
         SpriteVPlay {
             name: "springDown" //fall
@@ -31,8 +42,10 @@ EntityBase {
             frameY: 185
             frameWidth: 70
             frameHeight: 32
+            frameRate: 5
         }
     }
+
     BoxCollider {
         id: springCollider
         width: 20
@@ -47,6 +60,7 @@ EntityBase {
             if (otherEntityType === "noodle" && linearVelocity.y > 0) {
                 noodle.linevelocityY = -600
                 springSequenceVplay.jumpTo("springDown")
+                stimer.running = true
                 ntssound.play()
             }
         }
@@ -54,7 +68,6 @@ EntityBase {
     onYChanged: {
         if (y > gameScene.height) {
             entityDestroyed()
-            springSequenceVplay.jumpTo("spring")
         }
     }
     MovementAnimation {
@@ -68,5 +81,15 @@ EntityBase {
     Audio {
         id: ntssound
         source: "../../assets/sound/trampoline.mp3"
+    }
+
+    Timer {
+        id: stimer
+        interval: 350
+        running: false
+        repeat: false
+        onTriggered: {
+            springSequenceVplay.jumpTo("spring")
+        }
     }
 }
