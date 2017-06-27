@@ -26,11 +26,13 @@ Scene {
     }
 
     Image {
-        width: 32
-        height: 32
-        x: 10
-        y: 10
-        source: "../assets/ppause.png"
+        width: 16
+        height: 16
+        anchors.right: gameScene.gameWindowAnchorItem.right
+        anchors.rightMargin: 5
+        anchors.top: gameScene.gameWindowAnchorItem.top
+        anchors.topMargin: 5
+        source: "../assets/pause_button.png"
 
         MouseArea {
             anchors.fill: parent
