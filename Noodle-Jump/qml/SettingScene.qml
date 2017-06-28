@@ -21,15 +21,15 @@ Scene {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                if(theme0.visible){
+                if (theme0.visible) {
                     gameWindow.theme = 0
-                }else if(theme1.visible){
-                    gameWindow.theme =1
-                }else gameWindow.theme = 2
+                } else if (theme1.visible) {
+                    gameWindow.theme = 1
+                } else
+                    gameWindow.theme = 2
 
                 manager.themeChanged(gameWindow.theme)
                 gameWindow.state = "menu"
-
             }
         }
     }
@@ -41,10 +41,8 @@ Scene {
                  } else {
                      false
                  }
-        width: (settingScene.gameWindowAnchorItem.width / 10) * 9
+        width: settingScene.gameWindowAnchorItem.width
         height: (settingScene.gameWindowAnchorItem.height / 6) * 5
-        anchors.topMargin: 1
-        anchors.leftMargin: 10
         anchors.left: settingScene.gameWindowAnchorItem.left
         anchors.top: settingScene.gameWindowAnchorItem.top
         source: "../assets/snow/snowthem.png"
@@ -58,12 +56,10 @@ Scene {
                  }
 
         id: theme1
-        width: (settingScene.gameWindowAnchorItem.width / 10) * 9
+        width: settingScene.gameWindowAnchorItem.width
         height: (settingScene.gameWindowAnchorItem.height / 6) * 5
-        anchors.topMargin: 1
-        anchors.leftMargin: 10
-        anchors.left: parent.left
-        anchors.top: parent.top
+        anchors.left: settingScene.gameWindowAnchorItem.left
+        anchors.top: settingScene.gameWindowAnchorItem.top
         source: "../assets/bunny/bunnythem.png"
     }
 
@@ -74,12 +70,10 @@ Scene {
                      false
                  }
         id: theme2
-        width: (settingScene.gameWindowAnchorItem.width / 10) * 9
+        width: settingScene.gameWindowAnchorItem.width
         height: (settingScene.gameWindowAnchorItem.height / 6) * 5
-        anchors.topMargin: 1
-        anchors.leftMargin: 10
-        anchors.left: parent.left
-        anchors.top: parent.top
+        anchors.left: settingScene.gameWindowAnchorItem.left
+        anchors.top: settingScene.gameWindowAnchorItem.top
         source: "../assets/ninja/ninjathem.png"
     }
 
@@ -91,7 +85,7 @@ Scene {
                      true
                  }
         source: "../assets/leftselect.svg"
-        anchors.bottom: parent.bottom
+        anchors.bottom: settingScene.bottom
         anchors.bottomMargin: 30
         x: parent.width / 12
         scale: 0.8
@@ -122,7 +116,7 @@ Scene {
                  }
 
         source: "../assets/rightselect.svg"
-        anchors.bottom: parent.bottom
+        anchors.bottom: settingScene.bottom
         anchors.bottomMargin: 30
         anchors.left: leftselect.right
         anchors.leftMargin: 10
