@@ -98,16 +98,10 @@ EntityBase {
             x = 0
         }
 
-        if (noodleCollider.linearVelocity.x < 50) {
+        if (noodleCollider.linearVelocity.x < -50) {
             noodleImage.mirror = false
-        } else {
+        } else if (noodleCollider.linearVelocity.x > 50) {
             noodleImage.mirror = true
         }
-
-        //        if(accelerometer.reading.x > 0){
-        //            noodleImage.mirror = true
-        //        }else {
-        //            noodleImage.mirror = false
-        //        }
     }
 }

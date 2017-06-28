@@ -14,13 +14,13 @@ Scene {
     Image {
         id: gamebackImage
         anchors.fill: gameoverScene.gameWindowAnchorItem
-        source: if(gameWindow.theme === 0){
+        source: if (gameWindow.theme === 0) {
                     "../assets/snow/snowbck.png"
-                       }else if(gameWindow.theme === 1){
-                           "../assets/bunny/hopbck_X.png"
-                       }else if(gameWindow.theme === 2){
-                           "../assets/ninja/ghostbck_X.png"
-                       }
+                } else if (gameWindow.theme === 1) {
+                    "../assets/bunny/hopbck_X.png"
+                } else if (gameWindow.theme === 2) {
+                    "../assets/ninja/ghostbck_X.png"
+                }
     }
 
     Text {
@@ -45,18 +45,19 @@ Scene {
         }
     }
     Image {
-        id: setting
-        width: 57
-        height: 48
+        id: quit
+        width: 110
+        height: 40
+        scale: 0.8
+        x: end.x
         anchors.top: end.bottom
-        anchors.left: end.left
-        anchors.leftMargin: 150
-        anchors.topMargin: 150
-        source: "../assets/options.png"
-
+        anchors.topMargin: 30
+        source: "../assets/menu.png"
         MouseArea {
             anchors.fill: parent
-            onClicked: gameSettings()
+            onClicked: {
+                gameWindow.state = "menu"
+            }
         }
     }
 }

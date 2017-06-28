@@ -26,32 +26,31 @@ Scene {
                 }
 
         Image {
-            id:bckBottom
+            id: bckBottom
             height: 30
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.bottom: parent.bottom
-            source:if(gameWindow.theme === 0){
-                       "../assets/snow/bottom.png"
-                          }else if(gameWindow.theme === 1){
-                              "../assets/bunny/bottom.png"
-                          }else if(gameWindow.theme === 2){
-                              "../assets/ninja/bottom.png"
-                          }
+            source: if (gameWindow.theme === 0) {
+                        "../assets/snow/bottom.png"
+                    } else if (gameWindow.theme === 1) {
+                        "../assets/bunny/bottom.png"
+                    } else if (gameWindow.theme === 2) {
+                        "../assets/ninja/bottom.png"
+                    }
         }
     }
 
-      Image {
-          id: title
-          width: 202
-          height:48
-          anchors.top: parent.top
-          anchors.margins: 20
-          anchors.left: parent.left
-          anchors.leftMargin: 10
-          source:
-              "../assets/doodle-jump.png"
-      }
+    Image {
+        id: title
+        width: 202
+        height: 48
+        anchors.top: parent.top
+        anchors.margins: 20
+        anchors.left: parent.left
+        anchors.leftMargin: 10
+        source: "../assets/doodle-jump.png"
+    }
 
     PhysicsWorld {
         id: gravity
@@ -104,5 +103,9 @@ Scene {
             anchors.fill: parent
             onClicked: gameSettings()
         }
+    }
+
+    onBackButtonPressed: {
+        Qt.quit()
     }
 }

@@ -17,7 +17,7 @@ Scene {
     }
 
     Image {
-        id: end
+        id: resumeImage
         width: 110
         height: 40
         scale: 0.8
@@ -28,6 +28,22 @@ Scene {
             anchors.fill: parent
             onClicked: {
                 resume()
+            }
+        }
+    }
+    Image {
+        id: quit
+        width: 110
+        height: 40
+        scale: 0.8
+        x: resumeImage.x
+        anchors.top: resumeImage.bottom
+        anchors.topMargin: 30
+        source: "../assets/menu.png"
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                gameWindow.state = "menu"
             }
         }
     }
