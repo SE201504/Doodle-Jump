@@ -13,6 +13,8 @@ Scene {
     signal pause
     signal gameover
 
+    property alias score: score.text
+
     Image {
         id: gamebackImage
         anchors.fill: gameScene.gameWindowAnchorItem
@@ -38,6 +40,14 @@ Scene {
                         "../assets/ninja/bottom.png"
                     }
         }
+    }
+
+    Text {
+        id: score
+        anchors.left: gameScene.left
+        anchors.leftMargin:20
+        anchors.top:parent.top
+        anchors.topMargin: 10
     }
 
     Image {

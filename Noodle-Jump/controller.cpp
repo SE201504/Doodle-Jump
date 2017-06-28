@@ -24,6 +24,12 @@ Controller::Controller(QObject *parent) : QObject(parent),m_height(0),m_monsterP
     file.close();
 }
 
+QString Controller::height(){
+    long int a = static_cast<long>(m_height);
+    QString s = QString::number(a, 10);
+    return s;
+}
+
 double Controller::monsterPosition(){
     return m_monsterPosition;
 }

@@ -68,6 +68,7 @@ EntityBase {
         if (y < 150) {
             y = 150
             manager.heightChanged(10)
+            gameScene.score = manager.height()
         }
         if (noodleCollider.linearVelocity.y < -100) {
             if (gameWindow.theme === 0) {

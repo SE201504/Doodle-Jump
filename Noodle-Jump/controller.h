@@ -18,6 +18,7 @@ class Controller : public QObject
 public:
     explicit Controller(QObject *parent = nullptr);
 
+    Q_INVOKABLE QString height();
     Q_INVOKABLE double monsterPosition();
     Q_INVOKABLE void monsterPositionChanged();   
 

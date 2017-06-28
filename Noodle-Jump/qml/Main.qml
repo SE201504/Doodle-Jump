@@ -95,6 +95,10 @@ GameWindow {
                 opacity: 1
             }
             PropertyChanges {
+                target: pauseScene
+                pauseScore:manager.height()
+            }
+            PropertyChanges {
                 target: gameWindow
                 activeScene: pauseScene
             }
@@ -104,6 +108,10 @@ GameWindow {
             PropertyChanges {
                 target: gameoverScene
                 opacity: 1
+            }
+            PropertyChanges {
+                target: gameoverScene
+                gameoverScore:manager.height()
             }
             PropertyChanges {
                 target: gameWindow

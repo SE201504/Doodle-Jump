@@ -9,35 +9,41 @@ Scene {
     enabled: visible
 
     signal resume
+    property alias pauseScore: score.text
 
     Image {
-        id: pausebackImage
+        id: pauseSceneImage
         anchors.fill: pauseScene.gameWindowAnchorItem
         source: "../assets/pausecover.png"
     }
 
     Image {
-        id: resumeImage
+        id: end
         width: 110
         height: 40
-        scale: 0.8
-        x: parent.width / 2 - width / 3
-        y: parent.height / 5 * 4
+        anchors.centerIn: parent
         source: "../assets/resume.png"
         MouseArea {
             anchors.fill: parent
-            onClicked: {
-                resume()
-            }
+            onClicked: resume()
         }
     }
+    Text {
+        id: score
+        anchors.left: end.left
+        anchors.leftMargin:30
+        anchors.bottom: end.top
+        anchors.topMargin: 60
+        text: "0"
+    }
+
     Image {
-        id: quit
+        id: menu
         width: 110
         height: 40
         scale: 0.8
-        x: resumeImage.x
-        anchors.top: resumeImage.bottom
+        x: end.x
+        anchors.top: end.bottom
         anchors.topMargin: 30
         source: "../assets/menu.png"
         MouseArea {
