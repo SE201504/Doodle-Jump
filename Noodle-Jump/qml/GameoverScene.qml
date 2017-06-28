@@ -25,21 +25,32 @@ Scene {
                 }
     }
 
-    Text {
-        id: name
-        width: parent.width
-        height: parent.height / 3
-        verticalAlignment: Text.AlignVCenter
-        horizontalAlignment: Text.AlignHCenter
-        text: qsTr("Game Over")
-        font.pointSize: 24
+    Image {
+        id: overImage
+        width: 200
+        height: 60
+        anchors.top: gameoverScene.gameWindowAnchorItem.top
+        anchors.topMargin: 30
+        anchors.left: gameoverScene.gameWindowAnchorItem.left
+        anchors.leftMargin: 30
+        source: "../assets/race-over.png"
     }
+    Text {
+        id: socretext
+        anchors.right: score.left
+        anchors.leftMargin: 30
+        anchors.bottom: end.top
+        anchors.topMargin: 200
+        text: "Scores:"
+        font.pixelSize: 15
+    }
+
     Text {
         id: score
         anchors.left: end.left
-        anchors.leftMargin:30
+        anchors.leftMargin: 60
         anchors.bottom: end.top
-        anchors.topMargin: 60
+        anchors.topMargin: 200
         text: "0"
     }
 
@@ -47,7 +58,7 @@ Scene {
         id: end
         width: 110
         height: 40
-        anchors.centerIn: parent
+        anchors.centerIn: gameoverScene.gameWindowAnchorItem
         source: "../assets/resume.png"
         MouseArea {
             anchors.fill: parent

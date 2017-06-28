@@ -44,9 +44,10 @@ Scene {
 
     Text {
         id: score
+        text: "0"
         anchors.left: gameScene.left
-        anchors.leftMargin:20
-        anchors.top:parent.top
+        anchors.leftMargin: 20
+        anchors.top: parent.top
         anchors.topMargin: 10
     }
 
@@ -85,6 +86,7 @@ Scene {
     }
 
     Repeater {
+        id: f_repeater
         model: 15
         Floor {
 
@@ -107,7 +109,15 @@ Scene {
     Connections {
         target: noodle
         onDie: {
+            sceneState = "plugin"
+        }
+    }
+
+    Connections {
+        target: pluginScene
+        onEndPlugin: {
             sceneState = "gameover"
+            pluginScene.opacity = 0
             noodle.y = 350
             noodle.x = 30
 
@@ -115,6 +125,7 @@ Scene {
             floor.y = 400
         }
     }
+
     Component {
         id: monsterComponent
         Monster {
@@ -156,8 +167,10 @@ Scene {
         }
         onSpringCreate: {
             var newProperty = {
-                x: utils.generateRandomValueBetween(100, gameScene.width - 140),
-                y: -20
+                x//                x: utils.generateRandomValueBetween(100, gameScene.width - 140),
+                //                y: -20
+                : f_repeater.itemAt(14).x + 5,
+                y: f_repeater.itemAt(14).y - 5
             }
             entityManager.createEntityFromComponentWithProperties(
                         springComponent, newProperty)

@@ -84,8 +84,9 @@ Scene {
                  } else {
                      true
                  }
-        source: "../assets/leftselect.svg"
-        anchors.bottom: settingScene.bottom
+        source: "../assets/arrow.png"
+        rotation: -90
+        anchors.bottom: settingScene.gameWindowAnchorItem.bottom
         anchors.bottomMargin: 30
         x: parent.width / 12
         scale: 0.8
@@ -115,11 +116,12 @@ Scene {
                      true
                  }
 
-        source: "../assets/rightselect.svg"
-        anchors.bottom: settingScene.bottom
-        anchors.bottomMargin: 30
+        source: "../assets/arrow.png"
+        rotation: 90
+        anchors.bottom: settingScene.gameWindowAnchorItem.bottom
+        anchors.bottomMargin: 20
         anchors.left: leftselect.right
-        anchors.leftMargin: 10
+        anchors.leftMargin: 30
         scale: 0.8
         MouseArea {
             anchors.fill: parent

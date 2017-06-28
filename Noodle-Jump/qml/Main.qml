@@ -50,6 +50,10 @@ GameWindow {
         }
     }
 
+    PluginScene {
+        id: pluginScene
+    }
+
     // the menu scene of the game
 
     //default state is menu
@@ -116,6 +120,17 @@ GameWindow {
             PropertyChanges {
                 target: gameWindow
                 activeScene: gameoverScene
+            }
+        },
+        State {
+            name: "plugin"
+            PropertyChanges {
+                target: pluginScene
+                opacity: 1
+            }
+            PropertyChanges {
+                target: gameWindow
+                activeScene: pluginScene
             }
         }
     ]
