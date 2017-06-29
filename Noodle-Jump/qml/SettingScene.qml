@@ -41,8 +41,10 @@ Scene {
                  } else {
                      false
                  }
-        width: settingScene.gameWindowAnchorItem.width
+        width: (settingScene.gameWindowAnchorItem.width / 10) * 9
         height: (settingScene.gameWindowAnchorItem.height / 6) * 5
+        anchors.topMargin: 1
+        anchors.leftMargin: 15
         anchors.left: settingScene.gameWindowAnchorItem.left
         anchors.top: settingScene.gameWindowAnchorItem.top
         source: "../assets/snow/snowthem.png"
@@ -56,8 +58,10 @@ Scene {
                  }
 
         id: theme1
-        width: settingScene.gameWindowAnchorItem.width
+        width: (settingScene.gameWindowAnchorItem.width / 10) * 9
         height: (settingScene.gameWindowAnchorItem.height / 6) * 5
+        anchors.topMargin: 1
+        anchors.leftMargin: 15
         anchors.left: settingScene.gameWindowAnchorItem.left
         anchors.top: settingScene.gameWindowAnchorItem.top
         source: "../assets/bunny/bunnythem.png"
@@ -70,8 +74,10 @@ Scene {
                      false
                  }
         id: theme2
-        width: settingScene.gameWindowAnchorItem.width
+        width: (settingScene.gameWindowAnchorItem.width / 10) * 9
         height: (settingScene.gameWindowAnchorItem.height / 6) * 5
+        anchors.topMargin: 1
+        anchors.leftMargin: 10
         anchors.left: settingScene.gameWindowAnchorItem.left
         anchors.top: settingScene.gameWindowAnchorItem.top
         source: "../assets/ninja/ninjathem.png"
@@ -84,12 +90,11 @@ Scene {
                  } else {
                      true
                  }
-        source: "../assets/arrow.png"
-        rotation: -90
+        source: "../assets/leftselect.png"
         anchors.bottom: settingScene.gameWindowAnchorItem.bottom
-        anchors.bottomMargin: 30
-        x: parent.width / 12
-        scale: 0.8
+        anchors.bottomMargin: 10
+        x: settingScene.gameWindowAnchorItem.width / 12
+        scale: 0.5
         MouseArea {
             anchors.fill: parent
             onClicked: {
@@ -116,13 +121,12 @@ Scene {
                      true
                  }
 
-        source: "../assets/arrow.png"
-        rotation: 90
+        source: "../assets/rightselect.png"
         anchors.bottom: settingScene.gameWindowAnchorItem.bottom
-        anchors.bottomMargin: 20
+        anchors.bottomMargin: 14
         anchors.left: leftselect.right
-        anchors.leftMargin: 30
-        scale: 0.8
+        anchors.leftMargin: 7
+        scale: 0.5
         MouseArea {
             anchors.fill: parent
             onClicked: {
@@ -139,5 +143,13 @@ Scene {
                 }
             }
         }
+    }
+    Image {
+        id: settingBackGround
+        source: "../assets/settingback.png"
+        width: settingScene.gameWindowAnchorItem.width
+        height: settingScene.gameWindowAnchorItem.height
+        z: -1
+        anchors.fill: parent
     }
 }
