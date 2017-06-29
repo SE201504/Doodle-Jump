@@ -7,6 +7,7 @@ GameWindow {
     property alias sceneState: gameWindow.state
     property int theme: manager.theme()
 
+
     screenWidth: 640
     screenHeight: 960
     activeScene: menuScene

@@ -144,6 +144,8 @@ Scene {
     Component {
         id: springComponent
         Spring {
+            x: floor.x + 5
+            y: floor.y - 10
         }
     }
     Connections {
@@ -166,14 +168,7 @@ Scene {
                         floorComponent, newProperty)
         }
         onSpringCreate: {
-            var newProperty = {
-                x//                x: utils.generateRandomValueBetween(100, gameScene.width - 140),
-                //                y: -20
-                : f_repeater.itemAt(14).x + 5,
-                y: f_repeater.itemAt(14).y - 5
-            }
-            entityManager.createEntityFromComponentWithProperties(
-                        springComponent, newProperty)
+            entityManager.createEntityFromComponent(springComponent)
         }
     }
     Noodle {

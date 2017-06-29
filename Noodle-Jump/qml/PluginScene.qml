@@ -15,37 +15,8 @@ Scene {
 
     signal endPlugin
 
-    // app content with plugin list
-    NavigationStack {
-        id: pluginMainItem
+    AdMobPage {
 
-        // initial page contains list if plugins and opens pages for each plugin when selected
-        ListPage {
-            id: page
-            title: qsTr("V-Play Plugins")
-
-            model: ListModel {
-                ListElement {
-                    type: "Advertising"
-                    name: "AdMob"
-                    detailText: "Ad Monetization and Promotion"
-                    image: "../assets/logo-admob.png"
-                }
-            }
-
-            delegate: PluginListItem {
-                visible: name !== "GameCenter" || Theme.isIos
-
-                onSelected: {
-                    switch (name) {
-                    case "AdMob":
-                        page.navigationStack.push(Qt.resolvedUrl(
-                                                      "pages/AdMobPage.qml"))
-                        break
-                    }
-                }
-            }
-        }
     }
 
     onVisibleChanged: {
