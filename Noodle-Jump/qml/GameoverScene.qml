@@ -81,4 +81,24 @@ Scene {
             }
         }
     }
+
+    Image {
+        id: achievement
+        width: 110
+        height: 40
+        scale: 0.8
+        x: quit.x
+        anchors.top: quit.bottom
+        anchors.topMargin: 30
+        source: "../assets/achievement.png"
+        MouseArea {
+            anchors.fill: achievement
+            onClicked: {
+                gameWindow.userScore.reportScore(manager.height())
+                gameWindow.state = "achievement"
+                frogNetworkView.visible = true
+                gameoverScene.opacity = 0
+            }
+        }
+    }
 }
