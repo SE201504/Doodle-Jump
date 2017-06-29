@@ -110,6 +110,7 @@ Scene {
         target: noodle
         onDie: {
             sceneState = "plugin"
+            pluginScene.timer = true
         }
     }
 
@@ -125,7 +126,6 @@ Scene {
             floor.y = 400
         }
     }
-
     Component {
         id: monsterComponent
         Monster {

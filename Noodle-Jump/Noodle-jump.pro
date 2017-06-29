@@ -46,7 +46,10 @@ macx {
 DISTFILES += \
     qml/entity/Monster.qml \
     qml/entity/Spring.qml \
-    config.json
+    config.json \
+    code-admob.png \
+    logo-admob.png \
+    PluginScene.qml
 
 HEADERS += \
     controller.h
