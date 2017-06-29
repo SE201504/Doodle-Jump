@@ -109,16 +109,7 @@ Scene {
     Connections {
         target: noodle
         onDie: {
-            sceneState = "plugin"
-            pluginScene.timer = true
-        }
-    }
-
-    Connections {
-        target: pluginScene
-        onEndPlugin: {
             sceneState = "gameover"
-            pluginScene.opacity = 0
             noodle.y = 350
             noodle.x = 30
 
@@ -126,6 +117,7 @@ Scene {
             floor.y = 400
         }
     }
+
     Component {
         id: monsterComponent
         Monster {

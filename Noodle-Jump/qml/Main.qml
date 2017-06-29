@@ -7,8 +7,6 @@ GameWindow {
     property alias sceneState: gameWindow.state
     property int theme: manager.theme()
 
-    licenseKey: "00DC442A0FAD6489D865F4A57F621C96A111F237AC6A42640199DD646F4AD6DBF9C0210C517770849D94914151EAE126577D964323514F17F353FCEC93ECB67EC887222AF138B086371E40AFBC4603481D01A73BF08FAEA2D84F116A58C96B6A7852196E73776C90A54193B9EFA8240EBE695B335FB3D0CE0FCBCC803B1340305781BC369705E5C2C68CA4C54ECA4B76A6316A32908E87544A7FD6199F2EBDC5E695DB076A24B6B50D3049A36856682D6E5B6BD71F227295F09F8D4A57084B3DCB1365EC48EB4B6C70173E8326906E35281F95D348F6C3E3B849C3A3A2275508363132BB59A3C41EF06819D32E10E95132E9255F8323D5E3F210AEEFE9F8F90F59C9C437D6927B0F3E76D6B989457326254D2C8275DE79050BFED1C5E242DBAC8389577FFD2CF4189D852917921DCBD8DE5EF1076519D5D69E7EE704BDE2AA93"
-
     screenWidth: 640
     screenHeight: 960
     activeScene: menuScene
@@ -52,9 +50,6 @@ GameWindow {
         }
     }
 
-    PluginScene {
-        id: pluginScene
-    }
 
     // the menu scene of the game
 
@@ -122,17 +117,6 @@ GameWindow {
             PropertyChanges {
                 target: gameWindow
                 activeScene: gameoverScene
-            }
-        },
-        State {
-            name: "plugin"
-            PropertyChanges {
-                target: pluginScene
-                opacity: 1
-            }
-            PropertyChanges {
-                target: gameWindow
-                activeScene: pluginScene
             }
         }
     ]
