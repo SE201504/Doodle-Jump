@@ -144,12 +144,4 @@ Scene {
             }
         }
     }
-    Image {
-        id: settingBackGround
-        source: "../assets/settingback.png"
-        width: settingScene.gameWindowAnchorItem.width
-        height: settingScene.gameWindowAnchorItem.height
-        z: -1
-        anchors.fill: parent
-    }
 }
