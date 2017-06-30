@@ -27,8 +27,8 @@ Scene {
         Image {
             id: bckBottom
             height: 30
-            anchors.left: parent.left
-            anchors.right: parent.right
+            anchors.left: menuScene.gameWindowAnchorItem.left
+            anchors.right: menuScene.gameWindowAnchorItem.right
             anchors.bottom: parent.bottom
             source: if (gameWindow.theme === 0) {
                         "../assets/snow/bottom.png"
@@ -44,7 +44,7 @@ Scene {
         id: title
         width: 202
         height: 48
-        anchors.top: parent.top
+        anchors.top: menuScene.gameWindowAnchorItem.top
         anchors.margins: 20
         anchors.left: parent.left
         anchors.leftMargin: 10
@@ -80,7 +80,7 @@ Scene {
         id: start
         width: 110
         height: 40
-        anchors.centerIn: parent
+        anchors.centerIn: menuScene.gameWindowAnchorItem
         source: "../assets/play.png"
 
         MouseArea {
@@ -101,6 +101,24 @@ Scene {
         MouseArea {
             anchors.fill: parent
             onClicked: gameSettings()
+        }
+    }
+
+    Image {
+        id: help
+        width: 30
+        height: 30
+        anchors.top: menuScene.gameWindowAnchorItem.top
+        anchors.topMargin: 5
+        anchors.right: menuScene.gameWindowAnchorItem.right
+        anchors.rightMargin: 8
+        source: "../assets/redhelp.png"
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                gameWindow.state = "help"
+            }
         }
     }
 

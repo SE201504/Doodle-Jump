@@ -29,8 +29,8 @@ Scene {
         Image {
             id: bckBottom
             height: 30
-            anchors.left: parent.left
-            anchors.right: parent.right
+            anchors.left:gameScene.gameWindowAnchorItem.left
+            anchors.right:gameScene.gameWindowAnchorItem.right
             anchors.bottom: parent.bottom
             source: if (gameWindow.theme === 0) {
                         "../assets/snow/bottom.png"
@@ -45,9 +45,9 @@ Scene {
     Text {
         id: score
         text: "0"
-        anchors.left: gameScene.left
+        anchors.left: gameScene.gameWindowAnchorItem.left
         anchors.leftMargin: 20
-        anchors.top: parent.top
+        anchors.top: gameScene.gameWindowAnchorItem.top
         anchors.topMargin: 10
     }
 

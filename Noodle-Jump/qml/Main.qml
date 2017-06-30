@@ -53,6 +53,9 @@ GameWindow {
         }
     }
 
+    HelpScene {
+        id: helpScene
+    }
     // set up game network and achievements
     VPlayGameNetwork {
         id: gameNetwork
@@ -182,6 +185,18 @@ GameWindow {
             PropertyChanges {
                 target: gameWindow
                 activeScene: achievementScene
+            }
+        },
+        State {
+            name: "help"
+            PropertyChanges {
+                target: helpScene
+                opacity: 1
+            }
+
+            PropertyChanges {
+                target: gameWindow
+                activeScene: helpScene
             }
         }
     ]

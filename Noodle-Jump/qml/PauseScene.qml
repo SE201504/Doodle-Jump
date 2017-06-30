@@ -21,8 +21,9 @@ Scene {
         id: end
         width: 110
         height: 40
-        anchors.centerIn: parent
+        anchors.centerIn: pauseScene.gameWindowAnchorItem
         source: "../assets/resume.png"
+        scale: 0.8
         MouseArea {
             anchors.fill: parent
             onClicked: resume()
@@ -31,7 +32,7 @@ Scene {
     Text {
         id: score
         anchors.left: end.left
-        anchors.leftMargin:30
+        anchors.leftMargin: 30
         anchors.bottom: end.top
         anchors.topMargin: 60
         text: "0"
