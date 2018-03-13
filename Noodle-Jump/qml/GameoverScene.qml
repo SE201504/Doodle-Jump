@@ -59,25 +59,13 @@ Scene {
         width: 110
         height: 40
         anchors.centerIn: gameoverScene.gameWindowAnchorItem
-        source: "../assets/resume.png"
-        MouseArea {
-            anchors.fill: parent
-            onClicked: gameStart()
-        }
-    }
-    Image {
-        id: quit
-        width: 110
-        height: 40
-        scale: 0.8
-        x: end.x
-        anchors.top: end.bottom
-        anchors.topMargin: 30
-        source: "../assets/menu.png"
+        source: "../assets/playagain.png"
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                gameWindow.state = "menu"
+                gameScene.score = 0
+                manager.resetHeight()
+                gameStart()
             }
         }
     }

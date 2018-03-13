@@ -29,6 +29,9 @@ QString Controller::height(){
     QString s = QString::number(a, 10);
     return s;
 }
+void Controller::resetHeight(){
+    m_height = 0;
+}
 
 double Controller::monsterPosition(){
     return m_monsterPosition;

@@ -26,6 +26,7 @@ public:
     Q_INVOKABLE int theme();
 
     Q_INVOKABLE void springPositionChanged();
+    Q_INVOKABLE void resetHeight();
 
 signals:
 
